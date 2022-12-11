@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SPEC=("idx" "array" "str" "dict" "stack" "ctrl_flow" "path" "thread")
+
+for SECT in "${SPEC[@]}"
+do
+	LN_SPEC=$(jq ."[\"fin\"][\"$SECT\"][\"lvl\"] | length" stat.json)
+
+	LN_DIR=$(ls -1q lvl/$SECT/*.json | wc -l)
+
+	if [ $LN_SPEC -ne $LN_DIR ]; then
+		echo "Error: Level specification for '$SECT' not congruent with directory -- size $LN_SPEC in specification, $LN_DIR in directory"
+
+		exit 2
+	fi
+done
