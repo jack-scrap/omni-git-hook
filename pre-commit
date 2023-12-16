@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPEC=("idx" "array" "str" "dict" "stack" "ctrl_flow" "path" "thread")
+SPEC=("slot" "array" "str" "dict" "stack" "ctrl_flow" "path" "thread")
 
 for SECT in "${SPEC[@]}"
 do
